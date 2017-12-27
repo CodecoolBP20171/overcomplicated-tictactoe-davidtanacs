@@ -44,7 +44,7 @@ public class GameController {
 
     @GetMapping(value = "/game-move")
     public String gameMove(@ModelAttribute("player") Player player, @ModelAttribute("move") int move) {
-        System.out.println("Player moved " + move);
+        player.addMove(move);
         return "redirect:/game";
     }
 }
