@@ -17,6 +17,10 @@
             <div class="media-body">
                 <h1 class="media-heading">The coolest TicTacToe in the World</h1>
                 <p>OK, just a bit overcomplicated...</p>
+                <img th:if="${isWin == 'O'}"
+                     src="http://blog.eliteclubs.com/wp-content/uploads/2013/10/Hooray-You-Won-1024x872.jpg" alt="O"/>
+                <img th:if="${isWin == 'X'}" src="https://i.ytimg.com/vi/8cjzvJToHwo/maxresdefault.jpg" alt="X"/>
+                <img th:if="${isWin == '-'}" src="http://www.reactiongifs.com/r/2013/02/tied.gif" alt="-"/>
             </div>
             <div class="media-right">
                 <span class="media-heading" th:text="${player.userName}"/>
@@ -48,35 +52,35 @@
                 <div class="container-fluid game-container">
                     <div class="row">
                         <div class="col-xs-4">
-                            <a href="/game-move?move=0" class="btn btn-default square"><i  th:if="${#lists.contains(player.moves, 0)}" class="fa fa-circle-o" aria-hidden="true"></i></a>
+                            <a href="/game-move?move=0" class="btn btn-default square"><i th:if="${#strings.startsWith(state,'X')}" class="fa fa-times" aria-hidden="true"></i><i  th:if="${#strings.startsWith(state,'O')}" class="fa fa-circle-o" aria-hidden="true"></i></a>
                         </div>
                         <div class="col-xs-4">
-                            <a href="/game-move?move=1" class="btn btn-default square"><i  th:if="${#lists.contains(player.moves, 1)}" class="fa fa-circle-o" aria-hidden="true"></i></a>
+                            <a href="/game-move?move=1" class="btn btn-default square"><i th:if="${#strings.substring(state,1,2) == 'X'}" class="fa fa-times" aria-hidden="true"></i><i  th:if="${#strings.substring(state,1,2) == 'O'}" class="fa fa-circle-o" aria-hidden="true"></i></a>
                         </div>
                         <div class="col-xs-4">
-                            <a href="/game-move?move=2" class="btn btn-default square"><i class="fa fa-times" aria-hidden="true"></i><i  th:if="${#lists.contains(player.moves, 2)}" class="fa fa-circle-o" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <a href="/game-move?move=3" class="btn btn-default square"><i  th:if="${#lists.contains(player.moves, 3)}" class="fa fa-circle-o" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="col-xs-4">
-                            <a href="/game-move?move=4" class="btn btn-default square"><i  th:if="${#lists.contains(player.moves, 4)}" class="fa fa-circle-o" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="col-xs-4">
-                            <a href="/game-move?move=5" class="btn btn-default square"><i  th:if="${#lists.contains(player.moves, 5)}" class="fa fa-circle-o" aria-hidden="true"></i></a>
+                            <a href="/game-move?move=2" class="btn btn-default square"><i th:if="${#strings.substring(state,2,3) == 'X'}" class="fa fa-times" aria-hidden="true"></i><i  th:if="${#strings.substring(state,2,3) == 'O'}" class="fa fa-circle-o" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-4">
-                            <a href="/game-move?move=6" class="btn btn-default square"><i  th:if="${#lists.contains(player.moves, 6)}" class="fa fa-circle-o" aria-hidden="true"></i></a>
+                            <a href="/game-move?move=3" class="btn btn-default square"><i th:if="${#strings.substring(state,3,4) == 'X'}" class="fa fa-times" aria-hidden="true"></i><i  th:if="${#strings.substring(state,3,4) == 'O'}" class="fa fa-circle-o" aria-hidden="true"></i></a>
                         </div>
                         <div class="col-xs-4">
-                            <a href="/game-move?move=7" class="btn btn-default square"><i  th:if="${#lists.contains(player.moves, 7)}" class="fa fa-circle-o" aria-hidden="true"></i></a>
+                            <a href="/game-move?move=4" class="btn btn-default square"><i th:if="${#strings.substring(state,4,5) == 'X'}" class="fa fa-times" aria-hidden="true"></i><i  th:if="${#strings.substring(state,4,5) == 'O'}" class="fa fa-circle-o" aria-hidden="true"></i></a>
                         </div>
                         <div class="col-xs-4">
-                            <a href="/game-move?move=8" class="btn btn-default square"><i  th:if="${#lists.contains(player.moves, 8)}" class="fa fa-circle-o" aria-hidden="true"></i></a>
+                            <a href="/game-move?move=5" class="btn btn-default square"><i th:if="${#strings.substring(state,5,6) == 'X'}" class="fa fa-times" aria-hidden="true"></i><i  th:if="${#strings.substring(state,5,6) == 'O'}" class="fa fa-circle-o" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <a href="/game-move?move=6" class="btn btn-default square"><i th:if="${#strings.substring(state,6,7) == 'X'}" class="fa fa-times" aria-hidden="true"></i><i  th:if="${#strings.substring(state,6,7) == 'O'}" class="fa fa-circle-o" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col-xs-4">
+                            <a href="/game-move?move=7" class="btn btn-default square"><i th:if="${#strings.substring(state,7,8) == 'X'}" class="fa fa-times" aria-hidden="true"></i><i  th:if="${#strings.substring(state,7,8) == 'O'}" class="fa fa-circle-o" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col-xs-4">
+                            <a href="/game-move?move=8" class="btn btn-default square"><i th:if="${#strings.endsWith(state,'X')}" class="fa fa-times" aria-hidden="true"></i><i  th:if="${#strings.endsWith(state,'O')}" class="fa fa-circle-o" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
